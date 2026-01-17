@@ -1,0 +1,26 @@
+[
+  {
+    "id": "viral_fever_uncomplicated",
+    "name": "Uncomplicated viral fever",
+    "keywords": ["fever", "body pain", "cold"],
+    "default_template": "viral_fever_uncomplicated"
+  },
+  {
+    "id": "acute_watery_diarrhea",
+    "name": "Acute watery diarrhea",
+    "keywords": ["diarrhea", "vomiting", "loose stools"],
+    "default_template": "acute_watery_diarrhea"
+  },
+  {
+    "id": "mild_uri",
+    "name": "Mild URI",
+    "keywords": ["cough", "sore throat", "runny nose"],
+    "default_template": "mild_uri"
+  },
+  {
+    "id": "non_specific_mild_illness",
+    "name": "Non-specific mild illness",
+    "keywords": ["weakness", "tired"],
+    "default_template": "non_specific_mild_illness"
+  }
+]

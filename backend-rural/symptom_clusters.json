@@ -1,0 +1,133 @@
+{
+  "fever_general": {
+    "keywords": ["fever", "chills", "body pain", "weakness"],
+    "seasonal_risk": ["all"],
+    "questions": {
+      "duration": "Since how many days is the fever present?",
+      "severity": "Is the fever continuous or comes and goes?",
+      "systems": "Is it only fever or fever with cough, stomach pain, vomiting, or weakness?",
+      "red_flags": "Any confusion, fits, breathlessness, bleeding, or extreme weakness?"
+    }
+  },
+
+  "vector_borne_fever": {
+    "keywords": ["high fever", "joint pain", "platelet", "bleeding", "mosquito"],
+    "seasonal_risk": ["monsoon"],
+    "questions": {
+      "duration": "Since when is the fever present?",
+      "severity": "Is there severe body or joint pain?",
+      "systems": "Any vomiting, headache, or bleeding?",
+      "red_flags": "Any bleeding, severe weakness, or fainting?"
+    }
+  },
+
+  "respiratory": {
+    "keywords": ["cough", "breathless", "breathing problem", "chest"],
+    "seasonal_risk": ["winter", "monsoon"],
+    "questions": {
+      "duration": "Since when did the cough or breathing problem start?",
+      "severity": "Is the patient breathless at rest or while walking?",
+      "systems": "Is it only cough or cough with fever or chest pain?",
+      "red_flags": "Any chest pain, blue lips, or inability to breathe?"
+    }
+  },
+
+  "tuberculosis_suspect": {
+    "keywords": ["cough more than 2 weeks", "weight loss", "night sweats", "blood in sputum"],
+    "seasonal_risk": ["all"],
+    "questions": {
+      "duration": "Since how many weeks has the cough been present?",
+      "severity": "Is there weight loss or night sweats?",
+      "systems": "Any fever or blood in sputum?",
+      "red_flags": "Any severe breathlessness or massive bleeding?"
+    }
+  },
+
+  "gastrointestinal": {
+    "keywords": ["diarrhea", "loose stools", "vomiting", "stomach pain"],
+    "seasonal_risk": ["summer", "monsoon"],
+    "questions": {
+      "duration": "Since how many days are loose stools or vomiting present?",
+      "severity": "How many times in the last 24 hours?",
+      "systems": "Any fever or weakness along with stomach problem?",
+      "red_flags": "Any blood in stools or unable to drink fluids?"
+    }
+  },
+
+  "jaundice_hepatitis": {
+    "keywords": ["yellow eyes", "dark urine", "jaundice", "liver"],
+    "seasonal_risk": ["monsoon"],
+    "questions": {
+      "duration": "Since when did yellowing of eyes or urine change occur?",
+      "severity": "Is there itching or abdominal pain?",
+      "systems": "Any fever, nausea, or weakness?",
+      "red_flags": "Any confusion or bleeding?"
+    }
+  },
+
+  "cardiac": {
+    "keywords": ["chest pain", "palpitations", "breathlessness", "heart"],
+    "seasonal_risk": ["all"],
+    "questions": {
+      "duration": "When did the chest pain or heart problem start?",
+      "severity": "Is the pain severe or associated with sweating?",
+      "systems": "Any breathlessness or fainting?",
+      "red_flags": "Any severe chest pain, collapse, or unconsciousness?"
+    }
+  },
+
+  "neurological": {
+    "keywords": ["seizure", "fits", "paralysis", "stroke", "confusion"],
+    "seasonal_risk": ["all"],
+    "questions": {
+      "duration": "When did the neurological symptoms start?",
+      "severity": "Is the patient conscious or confused?",
+      "systems": "Any weakness of hands, legs, or speech difficulty?",
+      "red_flags": "Any loss of consciousness or repeated seizures?"
+    }
+  },
+
+  "snake_scorpion_bite": {
+    "keywords": ["snake bite", "scorpion sting", "bite", "sting"],
+    "seasonal_risk": ["summer", "monsoon"],
+    "questions": {
+      "duration": "When did the bite or sting occur?",
+      "severity": "Is there severe pain, swelling, or vomiting?",
+      "systems": "Any breathing difficulty or bleeding?",
+      "red_flags": "Any paralysis, breathlessness, or unconsciousness?"
+    }
+  },
+
+  "poisoning": {
+    "keywords": ["poison", "pesticide", "organophosphate", "ingestion"],
+    "seasonal_risk": ["all"],
+    "questions": {
+      "duration": "When was the poison consumed?",
+      "severity": "Is the patient vomiting or drowsy?",
+      "systems": "Any breathing difficulty or seizures?",
+      "red_flags": "Any unconsciousness or collapse?"
+    }
+  },
+
+  "maternal_health": {
+    "keywords": ["pregnant", "pregnancy", "bleeding", "labor pain"],
+    "seasonal_risk": ["all"],
+    "questions": {
+      "duration": "How many months pregnant is the patient?",
+      "severity": "Is there bleeding or severe abdominal pain?",
+      "systems": "Any headache, swelling, or reduced movements?",
+      "red_flags": "Any heavy bleeding or unconsciousness?"
+    }
+  },
+
+  "pediatric_general": {
+    "keywords": ["child", "baby", "poor feeding", "crying", "lethargy"],
+    "seasonal_risk": ["all"],
+    "questions": {
+      "duration": "Since when is the child unwell?",
+      "severity": "Is the child feeding and active?",
+      "systems": "Any fever, cough, or diarrhea?",
+      "red_flags": "Any convulsions, poor feeding, or bluish skin?"
+    }
+  }
+}

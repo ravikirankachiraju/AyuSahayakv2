@@ -1,0 +1,30 @@
+{
+  "viral_fever_uncomplicated": {
+    "condition_summary": "Likely mild viral fever.",
+    "possible_causes": ["Viral infection"],
+    "nurse_actions": ["Encourage fluids", "Monitor temperature"],
+    "escalation_criteria": ["Fever >5 days", "Breathing difficulty"],
+    "medicines_advised": ["Doctor may consider Paracetamol"]
+  },
+  "acute_watery_diarrhea": {
+    "condition_summary": "Watery diarrhea without dehydration.",
+    "possible_causes": ["Viral gastroenteritis"],
+    "nurse_actions": ["Give ORS", "Monitor urine output"],
+    "escalation_criteria": ["No urine 8 hours", "Blood in stool"],
+    "medicines_advised": ["Doctor may consider ORS", "Doctor may consider zinc"]
+  },
+  "mild_uri": {
+    "condition_summary": "Mild upper respiratory infection.",
+    "possible_causes": ["Common cold"],
+    "nurse_actions": ["Warm fluids", "Rest"],
+    "escalation_criteria": ["Breathing difficulty"],
+    "medicines_advised": ["Doctor may consider antihistamine"]
+  },
+  "non_specific_mild_illness": {
+    "condition_summary": "Mild illness without danger signs.",
+    "possible_causes": ["Minor viral illness"],
+    "nurse_actions": ["Rest", "Hydration"],
+    "escalation_criteria": ["Worsening symptoms"],
+    "medicines_advised": ["Doctor may consider Paracetamol"]
+  }
+}

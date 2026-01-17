@@ -1,0 +1,202 @@
+{
+  "Cardiologist": {
+    "resp_chest_pain": {
+      "id": "resp_chest_pain",
+      "description": "Chest pain, chest tightness, pressure sensation, breathlessness",
+      "impression": "Chest discomfort may have a cardiac component and requires close monitoring.",
+      "nurse_actions": [
+        "Monitor blood pressure, pulse, and oxygen saturation every 30 minutes.",
+        "Keep the patient in a semi-upright position.",
+        "Limit physical exertion and ensure adequate rest."
+      ],
+      "escalation": [
+        "Chest pain persisting longer than 20 minutes.",
+        "Associated sweating, nausea, or worsening breathlessness.",
+        "Oxygen saturation below 94% despite rest."
+      ],
+      "medicines": [
+        "Do not initiate cardiac medications without physician evaluation."
+      ]
+    },
+    "general": {
+      "id": "general",
+      "description": "Non-specific cardiovascular symptoms or risk monitoring",
+      "impression": "Cardiac involvement cannot be ruled out and should be observed.",
+      "nurse_actions": [
+        "Monitor vital signs regularly.",
+        "Observe for any new chest discomfort or palpitations."
+      ],
+      "escalation": [
+        "Development of chest pain or abnormal vital signs."
+      ],
+      "medicines": [
+        "Avoid starting cardiac medications without medical review."
+      ]
+    }
+  },
+
+  "Pulmonologist": {
+    "fever_cough": {
+      "id": "fever_cough",
+      "description": "Cough, fever, breathlessness, respiratory infection",
+      "impression": "Respiratory tract infection is likely contributing to the patient’s symptoms.",
+      "nurse_actions": [
+        "Monitor respiratory rate and oxygen saturation.",
+        "Encourage upright positioning to ease breathing."
+      ],
+      "escalation": [
+        "Increasing respiratory distress.",
+        "Oxygen saturation falling below 94%."
+      ],
+      "medicines": [
+        "Do not initiate respiratory medications without physician advice."
+      ]
+    },
+    "viral_urti": {
+      "id": "viral_urti",
+      "description": "Cold, runny nose, headache, mild fever, upper respiratory symptoms",
+      "impression": "Upper respiratory tract infection of likely viral origin is suspected.",
+      "nurse_actions": [
+        "Monitor temperature and respiratory comfort.",
+        "Encourage oral fluids and adequate rest."
+      ],
+      "escalation": [
+        "Fever persisting beyond 3 days.",
+        "Development of breathing difficulty or chest discomfort."
+      ],
+      "medicines": [
+        "Avoid starting medications without physician evaluation."
+      ]
+    },
+    "general": {
+      "id": "general",
+      "description": "Mild or unclear respiratory symptoms",
+      "impression": "Respiratory status requires observation for any progression.",
+      "nurse_actions": [
+        "Observe breathing pattern and comfort."
+      ],
+      "escalation": [
+        "Onset of breathlessness or persistent cough."
+      ],
+      "medicines": [
+        "Do not start respiratory drugs without review."
+      ]
+    }
+  },
+
+  "GeneralPhysician": {
+    "viral_fever": {
+      "id": "viral_fever",
+      "description": "Fever, headache, body aches, cold symptoms for 1 to 3 days",
+      "impression": "An acute viral illness is likely based on the symptom pattern.",
+      "nurse_actions": [
+        "Monitor body temperature periodically.",
+        "Encourage adequate hydration and rest."
+      ],
+      "escalation": [
+        "High-grade fever persisting more than 3 days.",
+        "New symptoms such as rash, vomiting, or breathing difficulty."
+      ],
+      "medicines": [
+        "Avoid initiating medications without medical assessment."
+      ]
+    },
+    "general": {
+      "id": "general",
+      "description": "General medical symptoms without clear system involvement",
+      "impression": "General medical observation is required to monitor symptom progression.",
+      "nurse_actions": [
+        "Monitor vital signs and overall condition."
+      ],
+      "escalation": [
+        "Any worsening or new symptoms."
+      ],
+      "medicines": [
+        "Do not start new medications."
+      ]
+    }
+  },
+
+  "Pediatrician": {
+    "fever_cough": {
+      "id": "fever_cough",
+      "description": "Child with fever, cough, or cold symptoms",
+      "impression": "Pediatric respiratory infection is suspected and requires close observation.",
+      "nurse_actions": [
+        "Ensure adequate fluid intake.",
+        "Monitor temperature every 4 hours."
+      ],
+      "escalation": [
+        "Poor feeding or lethargy.",
+        "Persistent or worsening fever."
+      ],
+      "medicines": [
+        "Do not administer medications without pediatrician approval."
+      ]
+    },
+    "general": {
+      "id": "general",
+      "description": "Non-specific pediatric symptoms",
+      "impression": "Pediatric evaluation and observation are required.",
+      "nurse_actions": [
+        "Observe child closely for changes in behavior or feeding."
+      ],
+      "escalation": [
+        "Any rapid clinical deterioration."
+      ],
+      "medicines": [
+        "Avoid medications without specialist review."
+      ]
+    }
+  },
+
+  "Gastroenterologist": {
+    "abdomen_gastro": {
+      "id": "abdomen_gastro",
+      "description": "Abdominal pain, vomiting, loose stools",
+      "impression": "Gastrointestinal involvement is suspected based on symptoms.",
+      "nurse_actions": [
+        "Keep the patient nil by mouth until reviewed.",
+        "Monitor abdominal discomfort and vomiting."
+      ],
+      "escalation": [
+        "Persistent vomiting.",
+        "Severe or worsening abdominal pain."
+      ],
+      "medicines": [
+        "Avoid gastrointestinal medications without approval."
+      ]
+    },
+    "general": {
+      "id": "general",
+      "description": "Mild or unclear gastrointestinal symptoms",
+      "impression": "Gastrointestinal symptoms require observation.",
+      "nurse_actions": [
+        "Monitor abdominal symptoms."
+      ],
+      "escalation": [
+        "Worsening pain or vomiting."
+      ],
+      "medicines": [
+        "Do not start GI medications without review."
+      ]
+    }
+  },
+
+  "Neurologist": {
+    "general": {
+      "id": "general",
+      "description": "Headache, dizziness, altered awareness",
+      "impression": "Neurological causes should be considered and monitored.",
+      "nurse_actions": [
+        "Monitor level of consciousness and orientation."
+      ],
+      "escalation": [
+        "Altered mental status or worsening neurological symptoms."
+      ],
+      "medicines": [
+        "Avoid neurological medications without specialist input."
+      ]
+    }
+  }
+}

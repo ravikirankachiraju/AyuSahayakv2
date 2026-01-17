@@ -1,0 +1,276 @@
+1. Cellulitis
+
+Overview:
+Deep-layer bacterial infection of the skin and subcutaneous tissue. Commonly caused by Streptococcus pyogenes or Staphylococcus aureus. Usually spreads rapidly with redness, swelling, and pain. May include fever or chills and can worsen if untreated.
+
+Causes and Risk Factors:
+- Entry of bacteria through cuts, cracks, insect bites, or fungal infections
+- Lymphedema or chronic swelling
+- Diabetes mellitus
+- Obesity or venous insufficiency
+- Immunosuppression
+
+Symptoms and Clinical Presentation:
+- Redness, warmth, swelling, and tenderness
+- Rapid spread, usually in one leg
+- Fever, chills, fatigue
+- Possible blistering, abscess, or peau d’orange (orange peel texture)
+
+Diagnosis:
+- Clinical examination
+- Cultures or imaging if abscess suspected
+
+Treatment and Medications:
+- Oral antibiotics (e.g., cephalexin)
+- MRSA-specific antibiotics if needed
+- Rest, limb elevation, hydration
+- IV antibiotics for severe cases
+
+Home Care and Prevention:
+- Clean wounds properly
+- Treat fungal foot infections
+- Good skin hygiene and moisturization
+- Elevate the affected limb
+
+Sources: Cleveland Clinic, DermNet®, JAMA Network, Wikipedia
+
+---
+
+2. Impetigo
+
+Overview:
+A highly contagious superficial bacterial infection, most common in children. Caused by Staphylococcus aureus or Streptococcus pyogenes. Characterized by red sores or blisters that burst and form honey-colored crusts.
+
+Causes and Risk Factors:
+- Direct contact with infected skin
+- Poor hygiene
+- Crowded places like schools and daycares
+- Eczema or any skin injury
+
+Symptoms and Clinical Presentation:
+- Honey-colored crusts
+- Itching and mild discomfort
+- Common around nose and mouth
+- Can spread by scratching
+
+Diagnosis:
+- Clinical examination
+- Bacterial culture if diagnosis unclear
+
+Treatment and Medications:
+- Topical antibiotics (mupirocin)
+- Oral antibiotics for widespread infection
+- Proper cleansing of lesions
+
+Home Care and Prevention:
+- Avoid touching or scratching lesions
+- Keep lesions covered
+- Do not share towels, clothing, or bedding
+- Maintain hygiene
+
+Sources: Cleveland Clinic, DermNet®
+
+---
+
+3. Athlete’s Foot (Tinea Pedis)
+
+Overview:
+A common fungal infection affecting the feet, especially between toes. Thrives in warm, moist conditions like sweaty shoes or public showers.
+
+Causes and Risk Factors:
+- Walking barefoot in public showers or locker rooms
+- Tight footwear trapping moisture
+- Excessive sweating
+- Weak immune system
+
+Symptoms and Clinical Presentation:
+- Itching, burning, or stinging
+- Cracked, scaly, or peeling skin
+- Blisters or redness
+- Thick or discolored nails if fungus spreads
+
+Diagnosis:
+- Clinical exam
+- Skin scrapings or culture if needed
+
+Treatment and Medications:
+- Topical antifungals (clotrimazole, terbinafine)
+- Oral antifungals for severe cases
+- Keep feet dry and clean
+
+Home Care and Prevention:
+- Wear breathable shoes
+- Use moisture-wicking socks
+- Avoid walking barefoot in communal areas
+- Disinfect shoes and socks
+
+Sources: Mayo Clinic
+
+---
+
+4. Nail Fungus (Onychomycosis)
+
+Overview:
+A fungal infection affecting toenails or fingernails, leading to thick, discolored, brittle nails. Common in diabetics and older adults.
+
+Causes and Risk Factors:
+- Fungal exposure in damp environments
+- Nail trauma
+- Poor circulation
+- Diabetes and immunosuppression
+
+Symptoms and Clinical Presentation:
+- Thick, crumbly nails
+- Yellow, brown, or white discoloration
+- Distorted nail shape
+- Pain with pressure
+
+Diagnosis:
+- Nail clipping exam, culture, or microscopy
+
+Treatment and Medications:
+- Oral antifungals (terbinafine, itraconazole)
+- Topical treatments for mild cases
+- Nail removal for severe infection
+
+Home Care and Prevention:
+- Keep nails clean and dry
+- Do not share nail tools
+- Disinfect clippers regularly
+
+Sources: Mayo Clinic
+
+---
+
+5. Ringworm (Tinea Corporis)
+
+Overview:
+A superficial fungal skin infection with ring-shaped, scaly red patches that have a clear center. Highly contagious.
+
+Causes and Risk Factors:
+- Contact with infected people or animals
+- Sharing towels, bedding, or clothing
+- Warm, humid conditions
+- Immunosuppression
+
+Symptoms and Clinical Presentation:
+- Ring-shaped red scaly patches
+- Itching and irritation
+- Lesions may spread outward
+- Raised, well-defined edges
+
+Diagnosis:
+- Clinical exam
+- Skin scrapings or fungal culture
+
+Treatment and Medications:
+- Topical antifungals (clotrimazole, terbinafine)
+- Oral antifungals for resistant cases
+
+Home Care and Prevention:
+- Wash bedding and clothes
+- Avoid sharing personal items
+- Maintain proper hygiene
+
+Sources: Mayo Clinic
+
+---
+
+6. Cutaneous Larva Migrans
+
+Overview:
+A parasitic skin infection caused by hookworm larvae. Characterized by itchy, snake-like tracks under the skin. Common in tropical areas, often from walking barefoot on contaminated sand or soil.
+
+Causes and Risk Factors:
+- Contact with contaminated soil or sand
+- Walking barefoot outdoors or on beaches
+- Exposure to infected animals
+
+Symptoms and Clinical Presentation:
+- Itchy, serpentine (snake-like) tracks
+- Red, inflamed skin
+- Lesions move daily as larvae migrate
+
+Diagnosis:
+- Clinical examination
+- Skin biopsy if unsure (rare)
+
+Treatment and Medications:
+- Oral antiparasitic medications (albendazole or ivermectin)
+- Topical treatments for localized lesions
+
+Home Care and Prevention:
+- Avoid barefoot walking in risky areas
+- Maintain hygiene
+- Seek care if symptoms worsen
+
+Sources: Medscape
+
+---
+
+7. Chickenpox (Varicella)
+
+Overview:
+A highly contagious viral infection causing itchy, fluid-filled blisters that eventually crust. Mostly affects children.
+
+Causes and Risk Factors:
+- Contact with infected individuals
+- Lack of past infection or vaccination
+- Immunocompromised state
+
+Symptoms and Clinical Presentation:
+- Rash: red spots → blisters → crusting
+- Fever, headache, fatigue
+- Rash spreads from chest/back outward
+
+Diagnosis:
+- Clinical evaluation
+- PCR or serology if needed
+
+Treatment and Medications:
+- Symptomatic treatment with antihistamines and acetaminophen
+- Antivirals (acyclovir) for severe cases
+- Avoid scratching to prevent infection
+
+Home Care and Prevention:
+- Isolation until lesions crust
+- Adequate hydration and rest
+- Vaccination
+
+Sources: Cleveland Clinic, Mayo Clinic
+
+---
+
+8. Shingles (Herpes Zoster)
+
+Overview:
+Reactivation of the varicella-zoster virus causing a painful, blistering rash along a dermatome. Common in older adults.
+
+Causes and Risk Factors:
+- Reactivation of dormant virus
+- Age above 50
+- Immunosuppression
+- Stress or illness
+
+Symptoms and Clinical Presentation:
+- Burning or tingling pain before rash
+- Red patches → clusters of blisters → crusts
+- Fever, fatigue, headache
+- Possible postherpetic neuralgia
+
+Diagnosis:
+- Clinical exam
+- PCR or immunofluorescence if atypical
+
+Treatment and Medications:
+- Antivirals (acyclovir, valacyclovir)
+- Pain management (NSAIDs, acetaminophen, gabapentin)
+- Corticosteroids for severe cases
+
+Home Care and Prevention:
+- Keep rash clean and covered
+- Avoid scratching
+- Vaccination (Shingrix)
+- Rest and hydration
+
+Sources: Cleveland Clinic, Mayo Clinic

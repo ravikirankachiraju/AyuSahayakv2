@@ -1,0 +1,344 @@
+1. Abrasions
+
+Overview:
+Superficial wound caused by friction scraping off the top layer of skin (epidermis). Common in road accidents, sports injuries, or falls. Usually minor but prone to infection if not cleaned properly.
+
+Causes and Risk Factors:
+- Falling or sliding against a rough surface (road, concrete, floor)
+- Sports injuries or accidents
+- Inadequate wound cleaning
+- Immunocompromised patients or diabetics (delayed healing)
+
+Symptoms and Clinical Presentation:
+- Raw, red skin surface with mild bleeding or oozing
+- Pain, burning sensation, mild swelling
+- Crusting or scab formation during healing
+- Signs of infection: pus, warmth, redness spreading around wound
+
+Diagnosis:
+- Visual examination to determine wound depth and contamination
+- Rarely requires imaging unless foreign bodies are suspected
+
+Treatment and Medications:
+- Clean thoroughly with saline or mild antiseptic solution
+- Apply topical antibiotic (e.g., mupirocin, neomycin)
+- Cover with sterile, non-stick dressing
+- Tetanus prophylaxis if wound is contaminated
+- Analgesics for pain if required
+
+Home Care and Prevention:
+- Keep clean and dry; avoid picking scabs
+- Replace dressings daily
+- Wear protective gear during sports or travel
+- Seek care if redness, swelling, or pus develops
+
+Sources: Cleveland Clinic, Mayo Clinic
+
+---
+
+2. Bruises (Contusions)
+
+Overview:
+Closed soft-tissue injury caused by blunt trauma leading to bleeding under the skin (hematoma). No external wound, but discoloration occurs due to blood leakage.
+
+Causes and Risk Factors:
+- Direct blunt trauma (falls, hits, sports injuries)
+- Medications like anticoagulants (aspirin, warfarin)
+- Fragile blood vessels in elderly or chronic illness
+- Coagulation disorders
+
+Symptoms and Clinical Presentation:
+- Blue, purple, or greenish skin discoloration
+- Tenderness, mild swelling, pain
+- No open wound
+- Large bruises or deep muscle bruises may limit mobility
+
+Diagnosis:
+- Clinical observation
+- Imaging (X-ray or ultrasound) if bone or deep muscle injury suspected
+
+Treatment and Medications:
+- Rest, Ice, Compression, Elevation (RICE protocol)
+- Analgesics (paracetamol preferred; avoid NSAIDs if bleeding risk)
+- Warm compresses after 48 hours to promote healing
+
+Home Care and Prevention:
+- Avoid further trauma
+- Elevate limb to reduce swelling
+- Seek care if bruise enlarges rapidly or is painful without clear cause
+
+Sources: Mayo Clinic, MedlinePlus
+
+---
+
+3. Burns
+
+Overview:
+Tissue damage from heat, electricity, chemicals, or radiation. Severity classified by depth — superficial (first-degree), partial-thickness (second-degree), or full-thickness (third-degree).
+
+Causes and Risk Factors:
+- Flames, scalding liquids, hot surfaces
+- Electricity, radiation, chemicals
+- Poor safety equipment, accidents
+- Children and elderly more vulnerable
+
+Symptoms and Clinical Presentation:
+- Redness, pain, swelling (first-degree)
+- Blisters, wet surface (second-degree)
+- Charred, dry, leathery skin, loss of sensation (third-degree)
+- Fever or shock in severe burns
+
+Diagnosis:
+- Clinical evaluation of burn depth and surface area (Rule of Nines)
+- Blood tests or imaging in severe cases
+
+Treatment and Medications:
+- Cool burn under running water (10-20 min)
+- Do not apply ice, butter, or toothpaste
+- Topical burn creams (silver sulfadiazine)
+- Pain control (analgesics)
+- Severe burns: IV fluids, hospitalization, possible grafts
+- Tetanus prophylaxis
+
+Home Care and Prevention:
+- Keep covered with sterile non-stick dressing
+- Hydration and avoid bursting blisters
+- Prevent by using protective gear, child safety measures
+
+Sources: Cleveland Clinic, Mayo Clinic
+
+---
+
+4. Cut (Minor Laceration)
+
+Overview:
+An open wound caused by sharp objects like glass, knives, or metal. May vary from shallow surface cuts to deeper tissue injuries.
+
+Causes and Risk Factors:
+- Sharp object injuries
+- Kitchen, workplace, or industrial accidents
+- Poor wound cleaning increases infection risk
+- Diabetics and elderly heal slower
+
+Symptoms and Clinical Presentation:
+- Visible break in skin with bleeding
+- Pain, mild swelling
+- Deeper cuts may expose fat or muscle tissue
+
+Diagnosis:
+- Clinical inspection
+- Assess for foreign body or deep tissue involvement
+
+Treatment and Medications:
+- Stop bleeding with direct pressure
+- Clean thoroughly with saline
+- Apply antibiotic ointment
+- Close with bandage, adhesive strip, or sutures if needed
+- Tetanus prophylaxis if contaminated
+
+Home Care and Prevention:
+- Keep wound clean and covered
+- Change dressing daily
+- Seek care if bleeding persists or wound edges gape open
+
+Sources: Mayo Clinic, MedlinePlus
+
+---
+
+5. Diabetic Wounds (Foot Ulcers)
+
+Overview:
+Chronic wounds in diabetic patients due to neuropathy, ischemia, and infection. Common on feet or pressure areas. High risk of amputation if untreated.
+
+Causes and Risk Factors:
+- Poor blood sugar control
+- Loss of sensation (neuropathy)
+- Poor circulation (ischemia)
+- Inadequate foot care, ill-fitting shoes
+
+Symptoms and Clinical Presentation:
+- Open wound, often painless
+- Foul odor, discharge, black necrotic tissue
+- Delayed healing
+- Swelling, redness, or fever (infection)
+
+Diagnosis:
+- Clinical examination, wound culture, and imaging (to rule out bone infection)
+- Blood glucose and vascular assessment
+
+Treatment and Medications:
+- Debridement of dead tissue
+- Antibiotics for infection
+- Moist wound care dressings
+- Pressure offloading (special shoes or casts)
+- Blood sugar control
+
+Home Care and Prevention:
+- Daily foot inspection
+- Avoid walking barefoot
+- Regular checkups with podiatrist
+- Proper footwear and hygiene
+
+Sources: American Diabetes Association, Cleveland Clinic
+
+---
+
+6. Laceration (Deep Cut / Tear)
+
+Overview:
+Tear or split in skin or tissue, often caused by blunt trauma or accidents. Deeper than a simple cut and may involve muscle or tendon.
+
+Causes and Risk Factors:
+- Blunt or sharp force trauma
+- Industrial or household accidents
+- Falls, motor vehicle collisions
+- Poor first aid or infection risk
+
+Symptoms and Clinical Presentation:
+- Deep wound edges, irregular shape
+- Bleeding, pain, swelling
+- Visible tissue damage
+- Possible numbness (nerve injury)
+
+Diagnosis:
+- Physical exam
+- Imaging (X-ray) if foreign body or bone injury suspected
+
+Treatment and Medications:
+- Clean wound thoroughly
+- Surgical closure (sutures or staples) if deep
+- Antibiotics for contaminated wounds
+- Tetanus prophylaxis
+- Pain relief medications
+
+Home Care and Prevention:
+- Keep area clean and covered
+- Avoid stretching wound
+- Follow up for suture removal
+
+Sources: Cleveland Clinic, MedlinePlus
+
+---
+
+7. Normal Skin
+
+Overview:
+Healthy, intact skin with no visible wounds or infection. Acts as a protective barrier against pathogens and injury.
+
+Characteristics:
+- Smooth, unbroken surface
+- No redness, swelling, or discharge
+- Normal sensation, temperature, and moisture
+
+Prevention & Care:
+- Maintain hydration and nutrition
+- Daily hygiene and moisturizing
+- Avoid trauma and burns
+- Manage chronic conditions (diabetes, vascular issues)
+
+Sources: DermNet NZ, Cleveland Clinic
+
+---
+
+8. Pressure Wounds (Bedsores / Pressure Ulcers)
+
+Overview:
+Localized injury from prolonged pressure reducing blood flow to skin, commonly over bony areas (hips, heels, tailbone). Common in bedridden or wheelchair patients.
+
+Causes and Risk Factors:
+- Prolonged immobility
+- Poor nutrition or hydration
+- Friction, shear, or moisture
+- Diabetes or vascular disease
+
+Symptoms and Clinical Presentation:
+- Stage 1: Redness, warm, intact skin
+- Stage 2: Open blister or shallow wound
+- Stage 3: Deep crater into fat tissue
+- Stage 4: Exposed muscle or bone, foul odor
+
+Diagnosis:
+- Clinical staging and wound assessment
+- May use imaging to assess depth or infection
+
+Treatment and Medications:
+- Relieve pressure (turning, special mattress)
+- Clean with saline; debride necrotic tissue
+- Dressings: hydrocolloid, foam, alginate
+- Antibiotics for infection
+- Nutrition and hydration optimization
+
+Home Care and Prevention:
+- Reposition every 2 hours
+- Use pressure-relieving surfaces
+- Maintain skin hygiene and moisture balance
+
+Sources: WHO, NCBI, StatPearls
+
+---
+
+9. Surgical Wounds
+
+Overview:
+Incision wounds made intentionally during surgery. Usually clean and predictable but can get infected if care is poor.
+
+Causes and Risk Factors:
+- Post-surgical complications (infection, tension)
+- Diabetes, obesity, poor nutrition
+- Contamination during surgery
+
+Symptoms and Clinical Presentation:
+- Clean incision with mild redness and tenderness
+- Signs of infection: swelling, pus, dehiscence (opening of wound)
+- Fever or pain worsening after day 3–5
+
+Diagnosis:
+- Clinical inspection; culture if infected
+
+Treatment and Medications:
+- Keep wound clean and dry
+- Use prescribed dressings
+- Antibiotics if infected
+- Drainage or re-suturing if wound opens
+
+Home Care and Prevention:
+- Follow surgical wound-care instructions
+- Avoid heavy lifting or strain
+- Report discharge, odor, or fever immediately
+
+Sources: CDC, Cleveland Clinic
+
+---
+
+10. Venous Wounds (Venous Leg Ulcers)
+
+Overview:
+Chronic ulcers caused by poor venous return leading to fluid buildup and tissue damage, usually in lower legs.
+
+Causes and Risk Factors:
+- Chronic venous insufficiency or varicose veins
+- Obesity, immobility, previous DVT
+- Age, leg trauma, prolonged standing
+
+Symptoms and Clinical Presentation:
+- Shallow, irregular ulcers around ankles
+- Brownish discoloration (hemosiderin staining)
+- Leg swelling, itching, pain (relieved by elevation)
+- Recurrence common
+
+Diagnosis:
+- Clinical exam, duplex ultrasound for venous flow
+
+Treatment and Medications:
+- Compression therapy (bandages/stockings)
+- Clean, moist dressings
+- Topical antibiotics for infection
+- Elevate legs frequently
+- Treat underlying venous disease
+
+Home Care and Prevention:
+- Daily leg elevation
+- Regular exercise and compression use
+- Skin hydration, avoid injury
+
+Sources: NHS, Mayo Clinic
