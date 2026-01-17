@@ -71,7 +71,7 @@ export default function HeroSlider() {
               <div className="slide-left-content">
                 <TypeAnimation
                   sequence={[
-                    "Are You A Hospital Owner?",
+                    "Are you an Hospital Owner?",
                     2000,
                     "",
                     200,

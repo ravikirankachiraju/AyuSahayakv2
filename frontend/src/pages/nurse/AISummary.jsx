@@ -83,7 +83,7 @@ console.log("🎒 Passed patient:", passedPatient);
       ← Back
     </button>
 
-    <h1 className="page-title">🤖 AI Summary Report</h1>
+    <h1 className="page-title">🤖 AI Report</h1>
 
     {/* Patient Card */}
     <div className="patient-box">
