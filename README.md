@@ -35,15 +35,15 @@ A **multimodal triage** system where a raw-image is an input to CNN, CNN predict
 ###### **Rural Care AI Module (Infectious \& Chronic Disease Management) :** 
 
 1. **Multi-Agent Architecture** – Modular agents (Symptom Collector, Complexity, PCP(Primary Care Physician), MDT(Multi-Disciplinary Team), with clearly bounded responsibilities.
-2. **Google Gemini embeddings (models/text-embedding-004) model** for symptom clustering, intent understanding, template matching, and semantic validation.
+2. **SBERT** for symptom clustering, intent understanding, template matching, and semantic validation.
 
 
 
 * **Symptom Collector Agent** performs structured intake with targeted, differentiating follow-up questions and red-flag prioritization using semantic clustering, rule-based question sequencing, negative-confirmation handling, and intent-aware GUARDRAILS(ensure accurate intake, safe outputs, and ethical boundaries).
 * **Complexity Agent** triages cases (low / medium / high) using symptoms + vitals ,using text embeddings, vitals feature vectors, RandomForest classification, and hard safety overrides ; High-risk cases are immediately escalated to hospital.
 * **PCP Agent** handles low-risk cases with rule-based, guideline-anchored care plans using syndrome matching, deterministic clinical templates, WHO-style RAG snippets, and strict medicine allow-lists.
-* **MDT Agent** manages medium-risk cases via a virtual specialist opinions(AI cardio / pulmo / gastro / pediatric / neuro) using rule-based specialist selection, Google text-embedding-004 template similarity matching, deterministic opinion merging, and escalation-focused consensus logic.
-* **Response Simplifier Agent** converts clinical output into culturally appropriate, nurse-friendly steps using a tightly sandboxed LLM from Google (Gemini) only for language simplification.
+* **MDT Agent** manages medium-risk cases via a virtual specialist opinions(AI cardio / pulmo / gastro / pediatric / neuro) using rule-based specialist selection, SBERT template similarity matching, deterministic opinion merging, and escalation-focused consensus logic.
+* **Response Simplifier Agent** converts clinical output into culturally appropriate, nurse-friendly steps using a tightly sandboxed LLM from Google (Gemini) only for language simplification, not for decision making.
 
 
 
