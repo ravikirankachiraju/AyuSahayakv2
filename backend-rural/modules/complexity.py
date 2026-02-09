@@ -25,18 +25,26 @@ class ComplexityAssessor:
         return self.model.encode([text], normalize_embeddings=True)[0]
 
     def _vital_vector(self, v):
+        age   = v.get("age")
+        spo2  = v.get("spo2")
+        pulse = v.get("pulse")
+        sys   = v.get("bp_sys")
+        dia   = v.get("bp_dia")
+    
         return np.array([
-            v.get("age",30),
-            v.get("spo2",98),
-            v.get("pulse",80),
-            v.get("bp_sys",120),
-            v.get("bp_dia",80),
-            1 if v.get("age",30)<5 else 0,
-            1 if v.get("age",30)>=60 else 0,
-            1 if v.get("spo2",98)<94 else 0,
-            1 if v.get("bp_sys",120)<90 else 0,
-            1 if v.get("pulse",80)>110 else 0
+            age   if age   is not None else 30,
+            spo2  if spo2  is not None else 98,
+            pulse if pulse is not None else 80,
+            sys   if sys   is not None else 120,
+            dia   if dia   is not None else 80,
+    
+            1 if (age  is not None and age < 5) else 0,
+            1 if (age  is not None and age >= 60) else 0,
+            1 if (spo2 is not None and spo2 < 94) else 0,
+            1 if (sys  is not None and sys < 90) else 0,
+            1 if (pulse is not None and pulse > 110) else 0,
         ], dtype=float)
+
 
     def assess(self, symptom_summary: dict) -> str:
         text = symptom_summary.get("raw_text","").lower()

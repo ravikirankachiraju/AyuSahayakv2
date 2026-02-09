@@ -192,6 +192,7 @@ export default function SkinCareAI() {
                 conditionType="skin" 
                 imageUrl={imageUrl} 
                 patientRef={ref} 
+                consultationRef={ref}
               />
             )}
           </section>

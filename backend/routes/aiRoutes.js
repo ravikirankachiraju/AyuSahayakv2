@@ -16,7 +16,7 @@ router.post("/save_case", authenticate, authorize("nurse"), async (req, res) => 
       timestamp
     } = req.body;
 
-    console.log("🔥 Incoming save request:", req.body);
+    console.log("Incoming save request:", req.body);
 
     // Normalize classification
     let cleanClass = String(classification || "").toLowerCase();

@@ -1,5 +1,5 @@
 # =========================================
-# skin_stage1.py — FINAL
+# skin_stage1.py — FINAL (MERGED & TRAINING-CORRECT)
 # File-2 inference + TRUE Grad-CAM
 # File-1 style RAG + Question Bank
 # Gemini ONLY for language rewriting
@@ -16,18 +16,16 @@ from sentence_transformers import SentenceTransformer
 from dotenv import load_dotenv
 import google.generativeai as genai
 
+from cnn_builder import build_skin_cnn
+from fusion_model_builder import build_skin_fusion
+from QUESTION_BANK import QUESTION_BANK
+
 # -----------------------------
 # ENV
 # -----------------------------
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 sys.stdout.reconfigure(encoding="utf-8")
-
-sys.path.append(os.path.dirname(__file__))
-
-from cnn_builder import build_skin_cnn
-from fusion_model_builder import build_skin_fusion
-from QUESTION_BANK import QUESTION_BANK
 
 # -----------------------------
 # Gemini (LANGUAGE ONLY)
@@ -44,23 +42,19 @@ gemini = genai.GenerativeModel("gemini-2.5-flash")
 # -----------------------------
 # FILE-1 STYLE UTILITIES
 # -----------------------------
-
 UNIVERSAL_SYMPTOMS = [
-    "redness", "itching", "pain", "swelling", "blistering", "scaling",
-    "circular rash", "burning", "fluid filled bumps", "skin peeling",
-    "yellow thick nails", "crusting", "tingling pain", "fever rash",
+    "redness","itching","pain","swelling","blistering","scaling",
+    "circular rash","burning","fluid filled bumps","skin peeling",
+    "yellow thick nails","crusting","tingling pain","fever rash",
     "track-like rash"
 ]
 
-def semantic_map(text, text_model):
-    univ_emb = text_model.encode(UNIVERSAL_SYMPTOMS, convert_to_numpy=True)
-    univ_emb /= np.linalg.norm(univ_emb, axis=1, keepdims=True)
-
-    emb = text_model.encode([text], convert_to_numpy=True)
-    emb /= np.linalg.norm(emb)
-
-    sims = np.dot(univ_emb, emb.T).reshape(-1)
-    return UNIVERSAL_SYMPTOMS[int(np.argmax(sims))]
+def semantic_map(text, model):
+    U = model.encode(UNIVERSAL_SYMPTOMS, convert_to_numpy=True)
+    U /= np.linalg.norm(U, axis=1, keepdims=True)
+    v = model.encode([text], convert_to_numpy=True)
+    v /= np.linalg.norm(v)
+    return UNIVERSAL_SYMPTOMS[int(np.argmax(U @ v.T))]
 
 def normalize_name(name: str) -> str:
     name = re.sub(r"^[A-Z]{2}-", "", name, flags=re.I)
@@ -68,32 +62,80 @@ def normalize_name(name: str) -> str:
     return name.replace("-", " ").replace("_", " ").lower().strip()
 
 def load_rag(rag_path):
-    raw_text = open(rag_path, "r", encoding="utf-8").read()
-    sections = re.split(r'\n(?=\d+\. )', raw_text.strip())
-    rag_data = {}
-
+    raw = open(rag_path, "r", encoding="utf-8").read()
+    sections = re.split(r'\n(?=\d+\. )', raw.strip())
+    rag = {}
     for sec in sections:
         m = re.match(r'(\d+)\.\s*([A-Za-z\s’\'\-()]+)', sec)
         if m:
-            name = re.sub(r"\([^)]*\)", "", m.group(2)).lower().strip()
-            rag_data[name] = sec.strip()
+            key = normalize_name(m.group(2))
+            rag[key] = sec.strip()
+    return rag
 
-    return rag_data
-
-# Normalize QUESTION_BANK keys
 NORMALIZED_QBANK = {
     normalize_name(k): v for k, v in QUESTION_BANK.items()
 }
 
+# -----------------------------
+# OpenCV ABC extraction
+# -----------------------------
+def extract_abc(image_path):
+    img = cv2.imread(image_path)
+    img = cv2.resize(img, (96,96))
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # A – Asymmetry
+    A = np.mean(np.abs(gray[:,:48] - cv2.flip(gray[:,48:],1))) / 255.0
+    # B – Border
+    edges = cv2.Canny(gray, 80, 160)
+    B = np.sum(edges > 0) / edges.size
+    # C – Color
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    C = np.std(hsv[:,:,1]) / 255.0
+
+    return A, B, C
+
+def interpret_abc(A, B, C, D):
+    def bar(v, max_blocks=6):
+        filled = int(round(v * max_blocks))
+        return "▓" * filled + "░" * (max_blocks - filled)
+
+    return [
+        {
+            "label": "Asymmetry",
+            "value": round(float(A), 2),
+            "bar": bar(A),
+            "note": "Higher means left and right sides look less similar"
+        },
+        {
+            "label": "Border",
+            "value": round(float(B), 2),
+            "bar": bar(B),
+            "note": "Higher means rough or irregular edges"
+        },
+        {
+            "label": "Color variation",
+            "value": round(float(C), 2),
+            "bar": bar(C),
+            "note": "Higher means multiple colors present"
+        },
+        {
+            "label": "Diameter",
+            "value": f"{int(D)} mm",
+            "bar": "▓" * 8,
+            "note": "User-reported lesion size"
+        }
+    ]
+
 # =========================================
 # MAIN
 # =========================================
-
 def main():
-    print("🔁 Starting Skin Stage-1 (File-2 Engine)")
+    print("🔁 Starting Skin Stage-1 (FINAL Engine)")
 
-    image_path = sys.argv[1]
-    symptoms_text = sys.argv[2]
+    image_path   = sys.argv[1]
+    symptoms_txt = sys.argv[2]
+    diameter_mm  = float(sys.argv[3]) if len(sys.argv) > 3 else 50.0
 
     BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "models"))
 
@@ -106,12 +148,15 @@ def main():
     NUM_CLASSES = len(CLASS_NAMES)
 
     # -----------------------------
-    # Load models (UNCHANGED)
+    # Load models (MATCH TRAINING)
     # -----------------------------
     cnn = build_skin_cnn(NUM_CLASSES)
     cnn.load_weights(os.path.join(BASE, "skin_cnn.weights.h5"))
 
-    fusion = build_skin_fusion(512, 384, NUM_CLASSES)
+    fusion = build_skin_fusion(
+        img_dim=64, txt_dim=384, abcd_dim=4,
+        num_classes=NUM_CLASSES
+    )
     fusion.load_weights(os.path.join(BASE, "skin_fusion.weights.h5"))
 
     feature_extractor = tf.keras.Model(
@@ -121,19 +166,30 @@ def main():
     text_encoder = SentenceTransformer("all-MiniLM-L6-v2")
 
     # -----------------------------
-    # Image preprocessing
+    # Image → embedding
     # -----------------------------
-    img = Image.open(image_path).convert("RGB").resize((150, 150))
-    arr = preprocess_input(img_to_array(img))
-    arr_batch = arr[None, ...]
+    img = Image.open(image_path).convert("RGB").resize((96,96))
+    arr = preprocess_input(img_to_array(img))[None,...]
+    img_emb = feature_extractor.predict(arr, verbose=0)
 
-    img_emb = feature_extractor.predict(arr_batch, verbose=0)
+    # -----------------------------
+    # ABCD
+    # -----------------------------
+    A,B,C = extract_abc(image_path)
+    abc_ui = interpret_abc(A, B, C, diameter_mm)
+
+    abcd = np.array([[A, B, C, diameter_mm]])
+
+    # -----------------------------
+    # Text
+    # -----------------------------
+    txt_emb = text_encoder.encode([symptoms_txt], convert_to_numpy=True)
 
     # ======================================================
-    # 🔥 TRUE GRAD-CAM (UNCHANGED)
+    # 🔥 TRUE GRAD-CAM
     # ======================================================
     conv_layers = [l for l in cnn.layers if isinstance(l, tf.keras.layers.Conv2D)]
-    target_layer = conv_layers[-2].name
+    target_layer = conv_layers[-1].name
 
     grad_model = tf.keras.Model(
         inputs=cnn.input,
@@ -141,113 +197,102 @@ def main():
     )
 
     with tf.GradientTape() as tape:
-        conv_out, preds = grad_model(arr_batch)
+        conv_out, preds = grad_model(arr)
         class_idx = tf.argmax(preds[0])
         loss = preds[:, class_idx]
 
     grads = tape.gradient(loss, conv_out)
-    weights = tf.reduce_mean(grads, axis=(1, 2))
+    weights = tf.reduce_mean(grads, axis=(1,2))
     cam = tf.reduce_sum(weights * conv_out, axis=-1)[0]
 
-    heatmap = tf.maximum(cam, 0)
-    heatmap /= tf.reduce_max(heatmap) + 1e-8
-    heatmap = heatmap.numpy()
+    heatmap = np.maximum(cam, 0)
+    heatmap /= heatmap.max() + 1e-8
 
     original = cv2.cvtColor(cv2.imread(image_path), cv2.COLOR_BGR2RGB)
-
-    heatmap = cv2.resize(
-        heatmap,
-        (original.shape[1], original.shape[0]),
-        interpolation=cv2.INTER_LINEAR
-    )
-
-    heatmap = cv2.GaussianBlur(heatmap, (31, 31), 0)
-
-    heatmap_color = cv2.applyColorMap(
-        np.uint8(255 * heatmap),
-        cv2.COLORMAP_JET
-    )
-
-    overlay = cv2.addWeighted(original, 0.6, heatmap_color, 0.4, 0)
+    heatmap = cv2.resize(heatmap, (original.shape[1], original.shape[0]))
+    heatmap = cv2.applyColorMap(np.uint8(255*heatmap), cv2.COLORMAP_JET)
+    overlay = cv2.addWeighted(original, 0.6, heatmap, 0.4, 0)
 
     out_dir = os.path.join(os.path.dirname(__file__), "..", "uploads", "gradcam")
     os.makedirs(out_dir, exist_ok=True)
-
     fname = f"skin_gradcam_{int(time.time())}.png"
-    cv2.imwrite(
-        os.path.join(out_dir, fname),
-        cv2.cvtColor(overlay, cv2.COLOR_RGB2BGR)
-    )
+    cv2.imwrite(os.path.join(out_dir, fname), cv2.cvtColor(overlay, cv2.COLOR_RGB2BGR))
 
     # -----------------------------
-    # Prediction (UNCHANGED)
+    # Prediction
     # -----------------------------
-    txt_emb = text_encoder.encode([symptoms_text], convert_to_numpy=True)
-    probs = fusion.predict([img_emb, txt_emb], verbose=0)[0]
+    probs = fusion.predict([img_emb, txt_emb, abcd], verbose=0)[0]
     top3 = probs.argsort()[-3:][::-1]
     top3_classes = [CLASS_NAMES[i] for i in top3]
 
-    # ======================================================
-    # 🧠 FILE-1 STYLE ENRICHMENT
-    # ======================================================
-    mapped_symptom = semantic_map(symptoms_text, text_encoder)
-
-    rag_data = load_rag(
-        os.path.join(os.path.dirname(__file__), "..", "rag_data", "skin.txt")
-    )
+    # -----------------------------
+    # RAG
+    # -----------------------------
+    rag_data = load_rag(os.path.join(os.path.dirname(__file__), "..", "rag_data", "skin.txt"))
 
     rag_summary = ""
-    for i, disease in enumerate(top3_classes):
-        key = normalize_name(disease)
-        retrieved = rag_data.get(key, "")
-        rag_summary += f"[{i+1}] {disease}\n{retrieved}\n\n"
+    for i, d in enumerate(top3_classes):
+        rag_summary += f"[{i+1}] {d}\n{rag_data.get(normalize_name(d), '')}\n\n"
 
-    # ======================================================
-    # ❓ QUESTION BANK (Deterministic)
-    # ======================================================
+    # -----------------------------
+    # QUESTION BANK
+    # -----------------------------
     selected_questions = []
+    for d in top3_classes:
+        qlist = NORMALIZED_QBANK.get(normalize_name(d), [])
+        if qlist:
+            selected_questions.append(qlist[0])
 
-    for disease in top3_classes:
-        key = normalize_name(disease)
-        q_list = NORMALIZED_QBANK.get(key, [])
-        if q_list:
-            selected_questions.append(q_list[0])  # deterministic
-
-    selected_questions = selected_questions[:3]
-
-    # -----------------------------
-    # Gemini rewrite (LANGUAGE ONLY)
-    # -----------------------------
     rewrite_prompt = (
-        "Rewrite these medical questions in very simple, nurse-friendly language.\n"
-        "Do NOT change meaning. One question per line.\n\n" +
-        "\n".join(f"- {q['canonical']}" for q in selected_questions)
-    )
+       "Rewrite each medical question into ONE very simple, nurse-friendly sentence.\n"
+       "Rules:\n"
+       "1. Return ONLY the rewritten questions\n"
+       "2. One question per line\n"
+       "3. NO headings\n"
+       "4. NO bullet points\n"
+       "5. Keep the same order\n\n" +
+       "\n".join(q["canonical"] for q in selected_questions)
+     )
 
-    rewritten = gemini.generate_content(rewrite_prompt).text.strip().split("\n")
-    rewritten = [ln.strip("- ").strip() for ln in rewritten if ln.strip()]
+    raw = gemini.generate_content(rewrite_prompt).text
+
+    lines = []
+    for line in raw.split("\n"):
+        line = line.strip()
+        if not line:
+            continue
+        if line.lower().startswith("here are"):
+            continue
+        if line.startswith(("-", "*", "•")):
+            line = line.lstrip("-*• ").strip()
+        lines.append(line)
+    
+    rewritten = lines[:len(selected_questions)]
+
 
     final_questions = []
-    for q, rw, disease in zip(selected_questions, rewritten, top3_classes):
+    for q, rw, d in zip(selected_questions, rewritten, top3_classes):
         final_questions.append({
             "id": q["id"],
             "canonical": q["canonical"],
             "display": rw,
-            "disease": disease,
+            "disease": d,
             "feature_phrases": q["feature_phrases"]
         })
 
     # -----------------------------
-    # FINAL JSON (File-1 STYLE)
+    # FINAL JSON
     # -----------------------------
     result = {
-        "mapped_symptom": mapped_symptom,
+        "mapped_symptom": semantic_map(symptoms_txt, text_encoder),
         "top3_classes": top3_classes,
         "top3_probs": [float(probs[i]) for i in top3],
         "gradcam_url": f"/backend/uploads/gradcam/{fname}",
         "questions": final_questions,
         "rag_summary": rag_summary,
-        "explainability": "gradcam"
+        "abc_values": abc_ui,
+
+        "explainability": "ABCD + GradCAM"
     }
 
     print("###JSON_START###")

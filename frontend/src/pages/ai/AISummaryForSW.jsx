@@ -27,7 +27,12 @@ export default function AISummary() {
         return;
       }
 
-      const ai = found.woundCareAI || found.skinCareAI || null;
+      const ai =
+  found.latestConsultation?.aiSummary ||
+  found.woundCareAI ||
+  found.skinCareAI ||
+  null;
+
 
       setPatient({
         name:
@@ -162,19 +167,22 @@ export default function AISummary() {
 
         .btn-back {
           padding: 14px 24px;
-          background: hsl(215 25% 27%);
-          color: white;
-          border-radius: 10px;
+          color: #060c19d7;
+          border-radius: 15px;
+          background-color: white;
           font-weight: 600;
           cursor: pointer;
-          border: none;
+          border: 1px solid #060c194c ;
           margin-top: 30px;
         }
       `}</style>
 
       <NurseNav />
 
-      <div className="ai-summary-container">
+      <div className="ai-summary-container" style={{marginTop: "2rem"}}>
+        <button className="btn-back" style={{marginBottom: "1.5rem"}} onClick={() => navigate("/nurse/patients")}>
+            ← Back
+          </button>
         <div className="ai-card">
           <div className="ai-title">AI Summary Report</div>
           <div className="ai-sub">Patient: {patient.name}</div>
@@ -206,9 +214,7 @@ export default function AISummary() {
             <ReactMarkdown>{ai.ragSummary}</ReactMarkdown>
           </div>
 
-          <button className="btn-back" onClick={() => navigate("/nurse/patients")}>
-            ← Back to Patients
-          </button>
+          
         </div>
       </div>
     </div>

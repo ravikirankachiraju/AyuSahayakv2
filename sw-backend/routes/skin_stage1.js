@@ -31,13 +31,15 @@ router.post("/", upload.single("image"), (req, res) => {
 
     const imagePath = req.file.path.replace(/\\/g, "/"); // ✅ Windows-safe
     const symptomText = req.body.symptoms || ""; 
+    const diameter = req.body.diameter || "50.0";
+
     const pythonScript = path.resolve(__dirname, "../python/skin_stage1.py");
 
     console.log("📷 Received Image for Stage 1:", imagePath);
     console.log("📝 Symptoms:", symptomText);
 
     
-    const py = spawn("python", [pythonScript, imagePath, symptomText])
+    const py = spawn("python", [pythonScript, imagePath, symptomText,diameter])
 
     let result = "";
     let errorOutput = "";

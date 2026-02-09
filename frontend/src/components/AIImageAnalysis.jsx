@@ -3,7 +3,7 @@ import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-export default function AIImageAnalysis({ conditionType, imageUrl, patientRef }) {
+export default function AIImageAnalysis({ conditionType, imageUrl, patientRef,consultationRef }) {
   const [stage, setStage] = useState("idle");
   const [loading, setLoading] = useState(false);
   const [stage1Result, setStage1Result] = useState(null);
@@ -12,6 +12,7 @@ export default function AIImageAnalysis({ conditionType, imageUrl, patientRef })
   const [finalReport, setFinalReport] = useState(null);
   const [symptoms, setSymptoms] = useState("");
   const [showStaticImage, setShowStaticImage] = useState(false);
+  const [diameter, setDiameter] = useState("");
 
 
   const accent = conditionType === "wound" ? "#f43f5e" : "#0d9488";
@@ -27,6 +28,7 @@ export default function AIImageAnalysis({ conditionType, imageUrl, patientRef })
       const formData = new FormData();
       formData.append("image", blob, "patient_image.jpg");
       formData.append("symptoms", symptoms);
+      formData.append("diameter", diameter || "5.0");
 
       const res = await axios.post(
         `http://localhost:5001/api/${conditionType}_stage1`,
@@ -81,18 +83,37 @@ export default function AIImageAnalysis({ conditionType, imageUrl, patientRef })
       setFinalReport(res.data.final_report);
 
       // -----------------------------------------------------
-      // 🔥 SAVE TO DATABASE (your required logic)
+      //  SAVE TO DATABASE (your required logic)
       // -----------------------------------------------------
+      // const aiPayload = {
+      //   final_report: res.data.final_report,
+      //   top3_classes: activeStage1.top3_classes,
+      //   top3_probs: activeStage1.top3_probs,
+      //   rag_summary: activeStage1.rag_summary,
+      //   questions: activeStage1.questions,
+      //   answers: activeAnswers,
+      //   image_url: imageUrl,
+      //   createdAt: new Date()
+      // };
       const aiPayload = {
-        final_report: res.data.final_report,
-        top3_classes: activeStage1.top3_classes,
-        top3_probs: activeStage1.top3_probs,
-        rag_summary: activeStage1.rag_summary,
-        questions: activeStage1.questions,
-        answers: activeAnswers,
-        image_url: imageUrl,
-        createdAt: new Date()
-      };
+  // 🔹 WHAT UI RENDERS
+  aiFinalReport: res.data.final_report,
+  ragSummary: activeStage1.rag_summary,
+
+  topPredictions: activeStage1.top3_classes.map((cls, i) => ({
+    name: cls,
+    confidence: Math.round(activeStage1.top3_probs[i] * 100)
+  })),
+
+  // 🔹 TRACEABILITY / AUDIT (IMPORTANT)
+  questions: activeStage1.questions,     // ✅ RESTORED
+  patientAnswers: activeAnswers,          // already used in doctor view
+
+  // 🔹 METADATA
+  imageUrl: imageUrl,
+  createdAt: new Date()
+};
+
 
       const saveUrl =
         conditionType === "wound"
@@ -101,6 +122,7 @@ export default function AIImageAnalysis({ conditionType, imageUrl, patientRef })
 
       await axios.post(saveUrl, {
         patient_ref: patientRef,
+         consultation_ref: consultationRef, 
         wound_result: conditionType === "wound" ? aiPayload : undefined,
         skin_result: conditionType === "skin" ? aiPayload : undefined
       });
@@ -287,6 +309,7 @@ export default function AIImageAnalysis({ conditionType, imageUrl, patientRef })
       {stage === "idle" && (
         <div className="idle-state">
           <div className="input-group">
+
             <label>Describe visible symptoms & patient complaints</label>
             <textarea
               className="ai-textarea"
@@ -295,6 +318,17 @@ export default function AIImageAnalysis({ conditionType, imageUrl, patientRef })
               onChange={(e) => setSymptoms(e.target.value)}
             />
           </div>
+          <div className="input-group" style={{ marginTop: "20px" }}>
+          <label>Estimated lesion diameter (in mm)</label>
+          <input
+            type="number"
+            className="ai-textarea"
+            style={{ minHeight: "auto" }}
+            placeholder="e.g. 12"
+            value={diameter}
+            onChange={(e) => setDiameter(e.target.value)}
+          />
+        </div>
           <button className="action-btn" onClick={handleAnalyze} disabled={!symptoms}>
             {loading ? "Initializing..." : "🚀 Start AI Diagnosis"}
           </button>
@@ -349,6 +383,7 @@ export default function AIImageAnalysis({ conditionType, imageUrl, patientRef })
         </div>
       )}
 
+
       {stage === "report" && showStaticImage && (
   <div style={{ marginBottom: "32px", textAlign: "center" }}>
     <h3 style={{ marginBottom: "12px" }}>
@@ -367,6 +402,47 @@ export default function AIImageAnalysis({ conditionType, imageUrl, patientRef })
   </div>
 )}
 
+{stage === "report" && stage1Result?.abc_values && (
+<div style={{
+  marginBottom: "32px",
+  padding: "24px",
+  background: "linear-gradient(180deg,#f8fafc,#ffffff)",
+  borderRadius: "18px",
+  border: "1px solid #e2e8f0",
+  boxShadow: "0 8px 20px rgba(0,0,0,0.05)"
+}}>
+
+    <h3 style={{ marginBottom: "16px", color: "#0f172a" }}>
+      🔍 Visual ABCD Analysis
+    </h3>
+
+    {stage1Result.abc_values.map((item, idx) => (
+      <div key={idx} style={{
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "10px",
+        fontFamily: "monospace",
+        fontSize: "14px"
+      }}>
+        <div style={{ width: "140px", fontWeight: "700" }}>
+          {item.label}
+        </div>
+
+        <div style={{ width: "90px", letterSpacing: "1px" }}>
+          {item.bar}
+        </div>
+
+        <div style={{ width: "70px", fontWeight: "700", marginLeft: "10px" }}>
+          {item.value}
+        </div>
+
+        <div style={{ marginLeft: "12px", color: "#64748b", fontSize: "13px" }}>
+          ({item.note})
+        </div>
+      </div>
+    ))}
+  </div>
+)}
 
       {stage === "report" && !loading && (
         <div className="report-section">

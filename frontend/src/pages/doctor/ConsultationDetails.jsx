@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import DoctorNav from '../../components/DoctorNav';
 import http from '../../api/http';
+import ReactMarkdown from "react-markdown";
+
+
+
 
 export default function ConsultationDetails() {
   const { id } = useParams();
@@ -525,22 +529,21 @@ export default function ConsultationDetails() {
             </div>
           )}
 
-          {/* Final AI Report */}
-          {ai.aiFinalReport && (
-            <div
-              style={{
-                background: "#f8f9fc",
-                padding: "14px",
-                borderRadius: "10px",
-                marginBottom: "16px",
-                whiteSpace: "pre-wrap",
-                lineHeight: "1.6",
-                fontSize: "14px"
-              }}
-            >
-              {ai.aiFinalReport}
-            </div>
-          )}
+{ai.aiFinalReport && (
+  <div
+    style={{
+      background: "#f8f9fc",
+      padding: "14px",
+      borderRadius: "10px",
+      marginBottom: "16px",
+      lineHeight: "1.6",
+      fontSize: "14px"
+    }}
+  >
+    <ReactMarkdown>{ai.aiFinalReport}</ReactMarkdown>
+  </div>
+)}
+
 
           {/* RAG Summary */}
           {ai.ragSummary && (
@@ -575,7 +578,7 @@ export default function ConsultationDetails() {
             </details>
           )}
 
-          {/* Patient Answers */}
+          {/* Patient Answers
           {ai.patientAnswers && (
             <div style={{ marginTop: "12px" }}>
               <strong style={{ fontSize: "14px", color: "#555" }}>
@@ -589,7 +592,7 @@ export default function ConsultationDetails() {
                 ))}
               </ul>
             </div>
-          )}
+          )} */}
         </div>
       );
     })}

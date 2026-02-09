@@ -192,6 +192,7 @@ export default function WoundCareAI() {
                 conditionType="wound" 
                 imageUrl={imageUrl} 
                 patientRef={ref} 
+                consultationRef={ref}
               />
             )}
           </section>

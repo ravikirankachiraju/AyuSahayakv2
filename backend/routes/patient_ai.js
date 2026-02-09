@@ -3,6 +3,7 @@ console.log("🔥 patient_ai.js LOADED");
 
 const express = require("express");
 const Patient = require("../models/Patient");
+const Consultation = require("../models/Consultation");
 const router = express.Router();
 
 /**
@@ -11,7 +12,7 @@ const router = express.Router();
  */
 router.post("/save-skincare", async (req, res) => {
   try {
-    const { patient_ref, skin_result } = req.body;
+    const { patient_ref,consultation_ref, skin_result } = req.body;
 
     if (!patient_ref || !skin_result) {
       return res.status(400).json({ error: "Missing required fields" });
@@ -22,6 +23,21 @@ router.post("/save-skincare", async (req, res) => {
       { skinCareAI: skin_result },
       { new: true }
     );
+
+    // ALSO SAVE AI INTO CONSULTATION 
+if (consultation_ref) {
+  await Consultation.findOneAndUpdate(
+    { consultationId: consultation_ref },
+    {
+      aiSummary: {
+        type: "skin",
+        ...skin_result,
+        generatedAt: new Date()
+      }
+    }
+  );
+}
+
 
     if (!updated) {
       return res.status(404).json({ error: "Patient not found" });
@@ -40,7 +56,7 @@ router.post("/save-skincare", async (req, res) => {
  */
 router.post("/save-woundcare", async (req, res) => {
   try {
-    const { patient_ref, wound_result } = req.body;
+    const { patient_ref, consultation_ref,wound_result } = req.body;
 
     if (!patient_ref || !wound_result) {
       return res.status(400).json({ error: "Missing required fields" });
@@ -51,6 +67,21 @@ router.post("/save-woundcare", async (req, res) => {
       { woundCareAI: wound_result },
       { new: true }
     );
+
+    // ALSO SAVE AI INTO CONSULTATION 
+if (consultation_ref) {
+  await Consultation.findOneAndUpdate(
+    { consultationId: consultation_ref },
+    {
+      aiSummary: {
+        type: "wound",
+        ...wound_result,
+        generatedAt: new Date()
+      }
+    }
+  );
+}
+
 
     if (!updated) {
       return res.status(404).json({ error: "Patient not found" });
